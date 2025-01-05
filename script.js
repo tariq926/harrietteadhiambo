@@ -64,6 +64,3 @@ document.getElementById('project6-highlights').addEventListener('click', functio
 document.getElementById('project6-details').addEventListener('click', function() {
   window.location.href = 'project6-details.html';
 });
-document.getElementById('project1-highlights').addEventListener('click', () => {
-  window.location.href = 'index.html#about';
-});
