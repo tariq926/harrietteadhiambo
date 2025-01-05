@@ -21,8 +21,18 @@ html {
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+}
+
+.skills-list {
+    display: none; /* Hide the list by default */
+}
+
+.core-skills:hover + .skills-list {
+    display: block;
+    /*Showthelistonhover*/
+    transition: ease-in 0.5s;
 }
 
 .container {
@@ -105,9 +115,9 @@ header .extra-nav {
 header .extra-nav button {
   cursor: pointer;
   background: transparent;
-  border: 2px solid #fff;
+  border: 2px solid #28a745; /* Green border */
   border-radius: 8px;
-  color: #fff;
+  color: #28a745; /* Green text */
   font-weight: 600;
   font-size: 18px;
   padding: 10px 12px;
@@ -829,3 +839,46 @@ footer .container .link-container .navigation ul li a {
   text-decoration: none;
   transition: 0.3s linear;
   }
+/* Skills and Expertise Section */
+.skills-section {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.skills-section h3 {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.skills-section h3:hover {
+  color: #007BFF; /* Change to your preferred hover color */
+}
+
+.skills-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+.skills-section:hover .skills-list {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.skills-list li {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding: 5px 0;
+  color: #333;
+}
