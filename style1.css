@@ -1,0 +1,228 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 20px;
+    color: #bcd0f7;
+    background: #1A233A;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.centered-text {
+    font-size: 34px;
+    font-weight: 600;
+    color: white;
+}
+
+.timeline {
+    position: relative;
+    background: #272e48;
+    border-radius: 4px;
+    padding: 5rem 1rem;
+    margin: 0 auto 1rem auto;
+    overflow: hidden;
+    width: 80%;
+}
+
+time.icon {
+    font-size: 1em;
+    display: block;
+    position: absolute;
+    width: 3.9em;
+    height: 3.9em;
+    background-color: #fff;
+    border-radius: 0.6em;
+    box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+    overflow: hidden;
+    top: -20px;
+    transform: translateY(-50%);
+    z-index: 3;
+    color: #2f2f2f;
+}
+
+time.icon * {
+    display: block;
+    width: 100%;
+    font-size: 0.8em;
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
+}
+
+time.icon strong {
+    position: absolute;
+    top: 0;
+    padding: 0.2em 0;
+    color: #fff;
+    background-color: #fd9f1b;
+    border-bottom: 1px dashed #f37302;
+    box-shadow: 0 2px 0 #fd9f1b;
+}
+
+time.icon em {
+    position: absolute;
+    bottom: 0.3em;
+    color: #fd9f1b;
+}
+
+time.icon span {
+    letter-spacing: -0.05em;
+    padding-top: 1.6em;
+    color: #2f2f2f;
+    font-size: 18.2px;
+}
+
+.text-sm {
+    font-size: 8px;
+}
+
+.text-md {
+    font-size: 8px;
+}
+
+.timeline-row:nth-child(odd) time.icon {
+    left: 15px;
+    top:45px;
+}
+
+.timeline-row:nth-child(even) time.icon {
+    right: 15px;
+    top:45px;
+}
+
+.timeline:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(45deg, #F27121, #E94057, #8A2387);
+    z-index: 1;
+}
+
+.timeline-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 45%;
+    padding: 15px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 1);
+    border-radius: 4px;
+    background: #1a233a;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    width: 8px;
+    height: 8px;
+    color: #bcd0f7;
+    border-width: 10px;
+    border-style: solid;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.timeline-row:nth-child(odd) .timeline-item::before {
+    right: calc(96% + 3.5px);
+    border-color: transparent transparent transparent #bcd0f7;
+}
+
+.timeline-row:nth-child(even) .timeline-item::before {
+    left:calc(96% + 3.5px);
+    border-color: transparent #bcd0f7 transparent transparent;
+}
+
+.timeline-row:nth-child(odd) .timeline-item {
+    margin-right: auto;
+    margin-left: calc(50% + 10px);
+    text-align: center;
+}
+
+.timeline-row:nth-child(even) .timeline-item {
+    margin-left: auto;
+    margin-right: calc(50% + 10px);
+    text-align: center;
+}
+
+.timeline-item:hover {
+    background: #272e48;
+    box-shadow: 0 0 15px rgba(227, 72, 168, 0.8), 0 0 30px rgba(248, 146, 202, 0.4);
+}
+
+.timeline-date {
+    font-size: 10px;
+    color: #bcd0f7;
+    margin-bottom: 10px;
+}
+
+.timeline-item h2 {
+    font-size: 20px;
+    color: #bcd0f7;
+}
+
+.timeline-content {
+    display: none;
+}
+
+.timeline-item:hover .timeline-content {
+    display: block;
+    color: #bcd0f7;
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding: 15px;
+    }
+    
+    .timeline-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .timeline:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-row:nth-child(odd) .timeline-item,
+    .timeline-row:nth-child(even) .timeline-item {
+        text-align: center;
+    }
+    
+    .timeline-row:nth-child(odd) .timeline-item::before,
+    .timeline-row:nth-child(even) .timeline-item::before {
+        left: 40%;
+        transform: translateX(-50%);
+        border-color: transparent transparent #bcd0f7 transparent;
+    }
+}
