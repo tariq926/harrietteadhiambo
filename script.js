@@ -1,66 +1,59 @@
-const menu = document.getElementById("menu");
-const closeButton = document.getElementById("close-mobile");
-const nav = document.getElementById("nav-mobile");
-const navLink = document.querySelectorAll(".nav-link");
+const menuToggle = document.getElementById("menu-toggle");
+const mobileNav = document.getElementById("mobile-nav");
+const closeMobile = document.getElementById("close-mobile");
 
-menu.addEventListener("click", () => {
-  nav.classList.add("show");
+if (menuToggle && mobileNav) {
+  menuToggle.addEventListener("click", () => mobileNav.classList.add("is-open"));
+}
+
+if (closeMobile && mobileNav) {
+  closeMobile.addEventListener("click", () => mobileNav.classList.remove("is-open"));
+}
+
+document.querySelectorAll(".mobile-nav a").forEach((link) => {
+  link.addEventListener("click", () => mobileNav?.classList.remove("is-open"));
 });
 
-closeButton.addEventListener("click", () => {
-  nav.classList.remove("show");
-});
+const header = document.querySelector(".site-header");
+const onScroll = () => {
+  if (!header) return;
+  header.classList.toggle("is-scrolled", window.scrollY > 12);
+};
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
 
-navLink.forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("show");
+const counters = document.querySelectorAll("[data-count]");
+const animateCounter = (el) => {
+  const target = Number(el.dataset.count);
+  const duration = 1400;
+  const start = performance.now();
+  const tick = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(target * eased).toLocaleString();
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+
+if (counters.length) {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.5 }
+  );
+  counters.forEach((el) => observer.observe(el));
+}
+
+document.querySelectorAll("[data-map-target]").forEach((hotspot) => {
+  hotspot.addEventListener("mouseenter", () => {
+    document
+      .querySelectorAll(".map-note")
+      .forEach((note) => note.classList.toggle("is-active", note.dataset.note === hotspot.dataset.mapTarget));
   });
-});
-
-document.getElementById('project1-highlights').addEventListener('click', function() {
-  window.location.href = 'project1-highlights.html';
-});
-
-document.getElementById('project1-details').addEventListener('click', function() {
-  window.location.href = 'project1-details.html';
-});
-
-document.getElementById('project2-highlights').addEventListener('click', function() {
-  window.location.href = 'project2-highlights.html';
-});
-
-document.getElementById('project2-details').addEventListener('click', function() {
-  window.location.href = 'project2-details.html';
-});
-
-document.getElementById('project3-highlights').addEventListener('click', function() {
-  window.location.href = 'project3-highlights.html';
-});
-
-document.getElementById('project3-details').addEventListener('click', function() {
-  window.location.href = 'project3-details.html';
-});
-
-document.getElementById('project4-highlights').addEventListener('click', function() {
-  window.location.href = 'project4-highlights.html';
-});
-
-document.getElementById('project4-details').addEventListener('click', function() {
-  window.location.href = 'project4-details.html';
-});
-
-document.getElementById('project5-highlights').addEventListener('click', function() {
-  window.location.href = 'project5-highlights.html';
-});
-
-document.getElementById('project5-details').addEventListener('click', function() {
-  window.location.href = 'project5-details.html';
-});
-
-document.getElementById('project6-highlights').addEventListener('click', function() {
-  window.location.href = 'project6-highlights.html';
-});
-
-document.getElementById('project6-details').addEventListener('click', function() {
-  window.location.href = 'project6-details.html';
 });

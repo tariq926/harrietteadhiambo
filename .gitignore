@@ -11,3 +11,7 @@ npm-debug.log*
 
 # Other files to ignore
 .DS_Store
+
+# Original briefing pack and unoptimized photographs
+Website Docs_Harriette/
+.~lock.*
