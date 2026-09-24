@@ -505,9 +505,22 @@ h3,
 }
 
 .work-visual img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+}
+
+.work-visual.is-logo {
+  background: var(--white);
+}
+
+.work-visual.is-logo img {
+  object-fit: contain;
+  padding: clamp(1.1rem, 7%, 2.4rem);
+  box-sizing: border-box;
 }
 
 .cover-art {
